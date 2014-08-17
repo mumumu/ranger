@@ -328,6 +328,10 @@ class Actions(FileManagerAware, EnvironmentAware, SettingsAware):
         elif type(files) not in (list, tuple):
             files = [files]
 
+        for f in os.listdir('.'):
+            if f == 'types.py':
+                self.enter_dir('..')
+
         flags = kw.get('flags', '')
         if 'c' in squash_flags(flags):
             files = [self.fm.thisfile]
